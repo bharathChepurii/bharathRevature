@@ -3,6 +3,7 @@ package com.snapchat.DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import com.snapchat.entity.snapchatuser;
 
@@ -15,18 +16,7 @@ public class SnapchatDAO implements SnapchatDAOInterface {
 
 	public int createProfileDAO(snapchatuser su)  {
 		
-//		for(int i=0;i<suser.length;i++) {
-//			if(suser[i]==null) {
-//				suser[i]=su;
-//				break;
-//			}
-//		}
-//		if(suser.length>0) {
-//			return 1;
-//		}
-//		else {
-//			return 0; 
-//		}
+
 		try {
 		//step 1 load driver
 		Class.forName("com.mysql.jdbc.Driver");
@@ -51,6 +41,7 @@ public class SnapchatDAO implements SnapchatDAOInterface {
 		//executeQuery() method return type will be ResultSet
 		
 		 int x=ps.executeUpdate();
+		 return x;
 		
 		}
 		catch(Exception e) {
@@ -58,5 +49,37 @@ public class SnapchatDAO implements SnapchatDAOInterface {
 		}
 		return 0;
 	}
+
+	@Override
+	public snapchatuser viewProfileDAO(snapchatuser su) {
+		snapchatuser suser=null;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/revaturechennai","root","root");
+			PreparedStatement ps=con.prepareStatement("select * from snapchatuser where email=?");
+			ps.setString(1, su.getEmail());
+			
+			ResultSet res=ps.executeQuery();
+			if(res.next()) {
+				String n=res.getString(1);
+				String p=res.getString(2);
+				String e=res.getString(3);
+				String a=res.getString(4);
+				
+				suser=new snapchatuser();
+				suser.setName(n);
+				suser.setPassword(p);
+				suser.setEmail(e);
+				suser.setAddress(a);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return suser;
+	}
+	
+	
 
 }

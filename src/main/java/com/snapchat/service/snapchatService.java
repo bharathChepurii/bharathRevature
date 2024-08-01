@@ -13,5 +13,13 @@ public class snapchatService implements snapchatServiceInterface {
 		return sd.createProfileDAO(su);
 	}
 
+	@Override
+	public snapchatuser viewProfileService(snapchatuser su) {
+		// TODO Auto-generated method stub
+		SnapchatDAOInterface sd=new SnapchatDAO();
+		return sd.viewProfileDAO(su);
+		
+	}
+
 	
 }

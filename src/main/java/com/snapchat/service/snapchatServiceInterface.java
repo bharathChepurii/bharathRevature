@@ -7,4 +7,6 @@ public interface snapchatServiceInterface {
 
 	int createProfileSerive(snapchatuser su) ;
 
+	snapchatuser viewProfileService(snapchatuser su);
+
 }

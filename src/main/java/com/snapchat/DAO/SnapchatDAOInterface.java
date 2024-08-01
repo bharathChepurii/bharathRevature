@@ -6,4 +6,6 @@ public interface SnapchatDAOInterface {
 
 	int createProfileDAO(snapchatuser su) ;
 
+	snapchatuser viewProfileDAO(snapchatuser su);
+
 }
