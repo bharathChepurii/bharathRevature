@@ -1,12 +1,16 @@
 package com.snapchat.service;
 
+import com.snapchat.DAO.SnapchatDAO;
+import com.snapchat.DAO.SnapchatDAOInterface;
 import com.snapchat.entity.snapchatuser;
 
 public class snapchatService implements snapchatServiceInterface {
 
 	public int createProfileSerive(snapchatuser su) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		SnapchatDAOInterface sd=new SnapchatDAO();
+		
+		return sd.createProfileDAO(su);
 	}
 
 	

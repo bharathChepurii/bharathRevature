@@ -7,7 +7,7 @@ import com.snapchat.controller.snapchatControllerInterface;
 
 public class snapchatView {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		// TODO Auto-generated method stub
 		System.out.println("***********Main Menu*********");
 	       System.out.println("press 1 to create ptofile");

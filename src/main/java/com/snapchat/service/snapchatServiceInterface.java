@@ -5,6 +5,6 @@ import com.snapchat.entity.snapchatuser;
 public interface snapchatServiceInterface {
 
 
-	int createProfileSerive(snapchatuser su);
+	int createProfileSerive(snapchatuser su) ;
 
 }

@@ -3,7 +3,7 @@ package com.snapchat.controller;
 public interface snapchatControllerInterface {
 
 
-	void createProfileController();
+	void createProfileController() ;
 
 	void viewProfileController();
 
