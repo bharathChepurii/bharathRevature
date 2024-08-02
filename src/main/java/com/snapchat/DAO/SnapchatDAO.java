@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.snapchat.entity.snapchatuser;
 
@@ -79,7 +81,69 @@ public class SnapchatDAO implements SnapchatDAOInterface {
 		}
 		return suser;
 	}
-	
-	
 
+	@Override
+	public List<snapchatuser> viewallProfileController() {
+		
+		List<snapchatuser> ss=new ArrayList<snapchatuser>();
+         try {
+        	 Class.forName("com.mysql.jdbc.Driver");
+ 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/revaturechennai","root","root");
+ 			PreparedStatement ps=con.prepareStatement("select*from snapchatuser");
+ 			
+ 			 ResultSet res=ps.executeQuery();
+ 			 while(res.next()) {
+ 				String n=res.getString(1);
+				String p=res.getString(2);
+				String e=res.getString(3);
+				String a=res.getString(4);
+				
+				snapchatuser su=new snapchatuser();
+				su.setName(n);
+				su.setPassword(p);
+				su.setEmail(e);
+				su.setAddress(a);
+				
+				ss.add(su);
+ 			 }
+         }
+         catch(Exception e) {
+        	 e.printStackTrace();
+         }
+  
+		return ss;
+	}
+
+	@Override
+	public List<snapchatuser> searchProfileController(String name) {
+	
+		List<snapchatuser> ss=new ArrayList<snapchatuser>();
+        try {
+       	 Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/revaturechennai","root","root");
+			PreparedStatement ps=con.prepareStatement("select*from snapchatuser where name=?");
+			
+			ps.setString(1, name);
+			
+			 ResultSet res=ps.executeQuery();
+ 			 while(res.next()) {
+ 				String n=res.getString(1);
+				String p=res.getString(2);
+				String e=res.getString(3);
+				String a=res.getString(4);
+				
+				snapchatuser su=new snapchatuser();
+				su.setName(n);
+				su.setPassword(p);
+				su.setEmail(e);
+				su.setAddress(a);
+				
+				ss.add(su);
+ 			 }
+        }
+        catch(Exception e) {
+       	 e.printStackTrace();
+        }
+		return ss;
+	}
 }

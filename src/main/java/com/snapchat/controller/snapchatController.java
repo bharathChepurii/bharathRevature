@@ -1,5 +1,6 @@
 package com.snapchat.controller;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.snapchat.entity.snapchatuser;
@@ -8,7 +9,9 @@ import com.snapchat.service.snapchatService;
 import com.snapchat.service.snapchatServiceInterface;
 
 public class snapchatController implements snapchatControllerInterface {
-
+    
+	snapchatServiceInterface si=new snapchatService();
+	
 	@Override
 	public void createProfileController() {
 		// TODO Auto-generated method stub
@@ -33,7 +36,6 @@ public class snapchatController implements snapchatControllerInterface {
         su.setAddress(address);
         
         
-        snapchatServiceInterface si=new snapchatService();
         int i=si.createProfileSerive(su);
         
         if(i>0) {
@@ -54,7 +56,7 @@ public class snapchatController implements snapchatControllerInterface {
 	    snapchatuser su=new snapchatuser();
 	    su.setEmail(email);
 	    
-	    snapchatServiceInterface si=new snapchatService();
+	    
 	    snapchatuser ss=si.viewProfileService(su);
 	    
 	    try {
@@ -78,9 +80,37 @@ public class snapchatController implements snapchatControllerInterface {
 	    
 
 	@Override
-	public void deleteProfileController() {
-		// TODO Auto-generated method stub
+	public void viewallProfileController(){
+		  
+		List<snapchatuser> ll= si.viewallProfileController();
 		
+		for(snapchatuser jk:ll) {
+			System.out.println("*********************");
+			System.out.println("Name is -->"+jk.getName());
+	    	System.out.println("Password is -->"+jk.getPassword());	
+	    	System.out.println("Email is -->"+jk.getEmail());
+	    	System.out.println("Address is -->"+jk.getAddress());
+	    	
+		}
+		
+	}
+
+	@Override
+	public void searchProfileController() {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+	    System.out.println("Enter name to search profile");
+	    String name=sc.next();
+		List<snapchatuser> sp=si.searchProfileController(name);
+		
+		for(snapchatuser jk:sp) {
+			System.out.println("*********************");
+			System.out.println("Name is -->"+jk.getName());
+	    	System.out.println("Password is -->"+jk.getPassword());	
+	    	System.out.println("Email is -->"+jk.getEmail());
+	    	System.out.println("Address is -->"+jk.getAddress());
+	    	
+		}
 	}
 
 	@Override
@@ -89,22 +119,5 @@ public class snapchatController implements snapchatControllerInterface {
 		
 	}
 
-	@Override
-	public void searchProfilrController() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void viewallProfileController() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void loginProfileController() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

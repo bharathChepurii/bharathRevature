@@ -7,14 +7,11 @@ public interface snapchatControllerInterface {
 
 	void viewProfileController();
 
-	void deleteProfileController();
+	void viewallProfileController();
+
+	void searchProfileController();
 
 	void editProfileController();
 
-	void searchProfilrController();
-
-	void viewallProfileController();
-
-	void loginProfileController();
 
 }
