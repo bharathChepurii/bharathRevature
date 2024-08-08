@@ -3,6 +3,8 @@
 import java.io.IOException;
 import java.util.Scanner;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
@@ -14,9 +16,12 @@ public class snapchatView {
 
 	public static void main(String[] args) throws IOException  {
 		// TODO Auto-generated method stub
+		BasicConfigurator.configure();
 		Logger log=Logger.getLogger("name");
 		FileAppender file= new FileAppender(new SimpleLayout(), "./login");
 		log.addAppender(file);
+		
+		log.info("Hello");
 		
 		
 		String ss="y";
