@@ -16,6 +16,9 @@ public interface snapchatServiceInterface {
 
 	List<snapchatuser> searchProfileController(String name);
 
+
+	int editProfileService(snapchatuser ll);
+
 	
 
 }

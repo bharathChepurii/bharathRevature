@@ -15,4 +15,8 @@ public interface SnapchatDAOInterface {
 
 	List<snapchatuser> searchProfileController(String name);
 
+	
+
+	int editProfileDAO(snapchatuser su);
+
 }

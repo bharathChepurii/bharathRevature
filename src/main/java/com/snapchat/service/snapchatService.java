@@ -33,5 +33,12 @@ public class snapchatService implements snapchatServiceInterface {
 		return sd.searchProfileController(name);
 	}
 
+	@Override
+	public int editProfileService(snapchatuser su) {
+		SnapchatDAOInterface ld=new SnapchatDAO();
+		return ld.editProfileDAO(su); 
+	}
+
+
 	
 }

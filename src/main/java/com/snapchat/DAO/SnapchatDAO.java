@@ -146,4 +146,27 @@ public class SnapchatDAO implements SnapchatDAOInterface {
         }
 		return ss;
 	}
+
+	@Override
+	public int editProfileDAO(snapchatuser su) {
+		int i=0;
+		try {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/revaturechennai","root","root");
+		PreparedStatement ps=con.prepareStatement("update snapchatuser set password=?, address=? where email=?");
+		ps.setString(1, su.getPassword());
+		ps.setString(2, su.getAddress());
+		ps.setString(3, su.getEmail());
+		i=ps.executeUpdate();
+		
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return i;
+	}
+	
 }
+
+	
+
